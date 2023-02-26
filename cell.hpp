@@ -1,6 +1,10 @@
-enum class cell_type { bomb, flower, defused };
+#ifndef CELL_HPP
+#define CELL_HPP
 
-enum class cell_status { hidden, visible };
+
+enum class cell_type { bomb, flower };
+
+enum class cell_status { hidden, visible, highlighted};
 
 class Cell {
  public:
@@ -16,3 +20,9 @@ class Cell {
   cell_type type_;
   cell_status status_;
 };
+
+bool IsBomb(Cell cell);
+bool IsHidden(Cell cell);
+bool IsHiddenBomb(Cell cell);
+
+#endif

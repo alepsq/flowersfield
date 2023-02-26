@@ -2,3 +2,5 @@
 .pub.pub
 doctest.h
 .clang-format
+test.out
+.vscode/
