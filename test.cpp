@@ -87,8 +87,8 @@ TEST_CASE("Field") {
     matrix(4, 3).SetType(cell_type::bomb);
     matrix(5, 1).SetType(cell_type::bomb);
     Field field{matrix};
-    CHECK(field.GetMatrix()(1, 2).GetType()==cell_type::bomb);
-        CHECK(field.near_hidden_bombs(2, 2) == 2);
+    CHECK(field.GetMatrix()(1, 2).GetType() == cell_type::bomb);
+    CHECK(field.near_bombs(2, 2) == 2);
     CHECK(field.evolve_sx(2, 2));
     CHECK(field.evolve_sx(3, 1));
     CHECK(field.evolve_dx(1, 2));

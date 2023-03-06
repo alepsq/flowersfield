@@ -23,14 +23,13 @@ class RandomIntGenerator {
 
 class Field {
  public:
-  Field(int height, int length)
-      : field_{height, length},
-        randomRow_{1, height},
-        randomColumn_{1, length} {}
+  Field(int height, int length) : field_{height, length} {}
 
   Field(int height, int length, int n_bombs) : Field(height, length) {
     if (n_bombs < 0 || n_bombs > length * height)
       throw std::out_of_range("number of bombs selected is invalid");
+    RandomIntGenerator randomRow_{1, height};
+    RandomIntGenerator randomColumn_{1, length};
     while (n_bombs != 0) {
       int row = randomRow_.get();
       int column = randomColumn_.get();
@@ -40,7 +39,7 @@ class Field {
       }
     }
   }
-  
+
   Field(Matrix<Cell> matrix) : Field(matrix.GetHeight(), matrix.GetLength()) {
     field_ = matrix;
   }
@@ -54,8 +53,6 @@ class Field {
 
  private:
   Matrix<Cell> field_;
-  RandomIntGenerator randomRow_;
-  RandomIntGenerator randomColumn_;
 };
 
 #endif
